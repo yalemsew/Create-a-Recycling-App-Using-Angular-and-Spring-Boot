@@ -1,10 +1,6 @@
 package com.example.backend.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
-//import org.springframework.data.annotation.Id;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -24,7 +20,7 @@ public class Product {
     @Column(nullable = false, length = 4000)
     private String description;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(nullable = false)
     private double price;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -36,16 +32,16 @@ public class Product {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private byte[] image;
 
-    public Product () {
+    public Product() {
     }
 
-    public Product (String name, String description, double price) {
+    public Product(String name, String description, double price) {
         this.name = name;
         this.description = description;
         this.price = price;
     }
 
-    public Product (String name, String description, double price, byte[]image) {
+    public Product(String name, String description, double price, byte[] image) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -54,6 +50,10 @@ public class Product {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public void setName(String name) {
@@ -66,6 +66,10 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public void setAddedOn(Date addedOn) {
