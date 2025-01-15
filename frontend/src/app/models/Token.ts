@@ -1,7 +1,4 @@
 //Task 16: write code for Token.ts here
-export class Token {
+export interface Token {
   token : string
-  constructor(token: string) {
-    this.token = token
-  }
 }
