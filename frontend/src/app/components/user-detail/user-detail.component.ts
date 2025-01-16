@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../../services/users-service';
 import { User } from '../../models/User';
-// import { faMapMarkerAlt, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-user-detail',
@@ -10,8 +10,8 @@ import { User } from '../../models/User';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  // marker = faMapMarkerAlt;
-  // phoneIcon = faPhoneAlt;
+  marker = faMapMarkerAlt;
+  phoneIcon = faPhoneAlt;
 
   user: User | undefined;
   editMode: boolean = false;
@@ -49,7 +49,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   updateUser() {
-    if (this.user && this.username) {
+    if (this.user && this.username && this.email && this.name && this.address && this.phone) {
       this.usersService.updateUser(this.user.id.toString(), this.username, this.user.password, this.email, this.name, this.address, this.phone).subscribe((user: User) => {
         this.usersService.createToken(user.username).subscribe((token: { token: string }) => {
           localStorage.removeItem('token');

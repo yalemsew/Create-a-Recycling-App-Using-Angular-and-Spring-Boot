@@ -19,7 +19,7 @@
     <tbody *ngFor="let item of cartItems; let i = index">
     <tr>
       <th scope="row" routerLink="/shop/products/{{item.product.id}}">{{item.product.name}}</th>
-      <td>${{item.product.price | number: '1.2-2'}}</td>
+      <td>${{item.product.price.toString() | number: '1.2-2'}}</td>
       <td>
         <div class="d-flex" style="align-items: center;">
           <p style="margin-right: 1rem;">{{ item.quantity }}</p>
@@ -44,7 +44,7 @@
         </div>
       </td>
       <td>{{item.addedOn | date: 'MM/dd/YYYY'}}</td>
-      <td>${{item.totalPrice | number: '1.2-2'}}</td>
+      <td>${{item.totalPrice.toString() | number: '1.2-2'}}</td>
     </tr>
     </tbody>
     <tbody>
@@ -53,7 +53,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td><h4 class="text-success font-weight-bold">${{getTotal() | number: '1.2-2'}}</h4></td>
+      <td><h4 class="text-success font-weight-bold">${{getTotal().toString() | number: '1.2-2'}}</h4></td>
     </tr>
     <tr>
       <th scope="row"></th>
